@@ -116,7 +116,7 @@
   @demo demo/index.html
 -->
 <dom-module id="paper-autocomplete">
-  <template>
+  <template include="paper-autocomplete-shared-styles">
     <style>
       :host {
         display: block;
@@ -197,7 +197,7 @@
 
         <slot name="prefix" slot="prefix"></slot>
         <!-- TODO: remove tabindex workaround when  is fixed https://github.com/PolymerElements/paper-input/issues/324 -->
-        <paper-icon-button slot="suffix" suffix id="clear" icon="clear" on-click="_clear" tabindex="-1"></paper-icon-button>
+        <paper-icon-button slot="suffix" suffix id="clear" icon="[[clearIcon]]" on-click="_clear" tabindex="-1"></paper-icon-button>
         <slot name="suffix" slot="suffix"></slot>
       </paper-input>
       <!-- to announce current selection to screen reader -->
@@ -286,6 +286,14 @@
          * The placeholder text
          */
         placeholder: String,
+
+        /**
+         * Icon for the clear button
+         */
+         clearIcon: {
+          type: String,
+          value: 'clear'
+         },
 
         /**
          * `required` Set to true to mark the input as required.
